@@ -1,0 +1,19 @@
+
+body{
+    background-color: grey;
+}
+
+.caxia{
+    background-color: white;
+    text-align: center;
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 100px auto;
+}
+
+.caxia h2{
+    color: purple;
+    font-family:'Courier New', Courier, monospace;
+    text-align: center;
+}
