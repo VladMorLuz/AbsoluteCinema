@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="Estailo1OP.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a href="catalogo.html"><img src="ChatGPT Image 8 de abr. de 2025, 22_15_48.png" alt="Logo" id="logo" /></a>
+    <form class="search-bar" onsubmit="searchMovies(); return false;">
+      <input type="text" id="search-query" placeholder="Buscar filme ou série..." />
+      <button onclick="searchMovies()" class="search-btn">🔍</button>
+    </form>
+    <button>Categorias</button>
+    <button>Favoritos</button>
+    <button>🔔</button>
+    <div class="dropdown">
+        <img src="—Pngtree—default male avatar_5939655.png" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+  </header>
+
+  <main style="padding: 2rem; text-align: center;">
+    <h1>Bem-vindo(a) ao seu perfil!</h1>
+    <p><strong>Email:</strong> <span id="user-email">Carregando...</span></p>
+    
+    <button onclick="logout()" style="margin-top: 2rem; background-color: #d1345b; color: white; padding: 0.6rem 1.2rem; border: none; border-radius: 8px; cursor: pointer;">
+      Sair da Conta
+    </button>
+  </main>
+
+  <footer>
+    © Absolute Cinema - 2025, todos os direitos reservados
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabase = window.supabase.createClient(
+      "https://fffkbkotjbhcceeftiut.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZmZmtia290amJoY2NlZWZ0aXV0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI5OTA2ODEsImV4cCI6MjA1ODU2NjY4MX0.YK7BVOG78Hcky22Cw1BpM_ZOdyd_ZOQgOLklR1rdMWU"
+    );
+
+    async function getUserInfo() {
+      const { data: { user }, error } = await supabase.auth.getUser();
+
+      if (user) {
+        document.getElementById('user-email').innerText = user.email;
+      } else {
+        window.location.href = 'login.html'; // redireciona se não estiver logado
+      }
+    }
+
+    async function logout() {
+      await supabase.auth.signOut();
+      localStorage.removeItem("usuarioEmail");
+      window.location.href = 'login.html';
+    }
+
+    // Executa ao carregar a página
+    getUserInfo();
+  </script>
+</body>
+</html>

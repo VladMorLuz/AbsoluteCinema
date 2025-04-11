@@ -1,81 +1,257 @@
-button {
-    background-color: purple;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s ease-in-out;
+/* RESET E BASE */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
 }
 
-button:hover, button:focus {
-    background-color: #8a2be2;
-    transform: scale(1.05);
-} 
+body {
+  font-family: 'EB Garamond', serif;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'EB Garamond', serif;
-    background-color: #0d0d0d; /* quase preto */
-    color: #ffffff;
-    height: 100vh;
-    display: flex;
-  }
-  
-  .caxia {
-    width: 100%;
-    padding: 4rem;
-    background-color: rgba(20, 20, 20, 0.95); /* leve transparência */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  input {
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    background-color: #1c1c1c;
-    color: #fff;
-  }
-  
-  input::placeholder {
-    color: #aaa;
-  }
-  
-  button {
-    margin-top: 1rem;
-    padding: 0.8rem;
-    font-size: 1rem;
-    background-color: #d1345b;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  button:hover {
-    background-color: #ff2e63;
-  }
-  
-  #mensagem {
-    margin-top: 1rem;
-    font-weight: bold;
-    color: #ffd369;
-  }
+/* HEADER */
+header.navbar {
+  background-color: #1e181b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
 
+#logo {
+  width: 80px;
+  height: auto;
+}
+
+/* BARRA DE PESQUISA COM BOTÃO INTERNO */
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  flex-grow: 1;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  padding-right: 3rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #1c1c1c;
+  color: #fff;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
+}
+
+.search-bar button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #d1345b;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* BOTÕES */
+.navbar button:not(.search-btn) {
+  background-color: #d1345b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.navbar button:hover:not(.search-btn) {
+  background-color: #ff2e63;
+  transform: scale(1.05);
+}
+
+/* AVATAR */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #d1345b;
+  object-fit: cover;
+}
+
+/* GRID DE FILMES - COMPACTA E FLUIDA */
+.grid-filmes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  flex: 1;
+}
+
+.card {
+  background-color: #181818;
+  border: 2px solid #d1345b;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 8px rgba(209, 52, 91, 0.3);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+/* RODAPÉ */
+footer {
+  background-color: #292424;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 120%;
+  background-color: #1e1e1e;
+  border: 1px solid #d1345b;
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-width: 180px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.4rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #333;
+}
+
+.hidden {
+  display: none;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.player-controls button {
+  background-color: transparent;
+  border: 1px solid #ff2e63;
+  color: #ff2e63;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.player-controls button:hover {
+  background-color: #ff2e63;
+  color: white;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.popup-content {
+  background-color: #1e1e1e;
+  border: 2px solid #d1345b;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  color: white;
+  position: relative;
+  text-align: center;
+}
+
+.popup-content img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.popup-content h2 {
+  margin: 0.5rem 0;
+}
+
+.popup-content p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  color: #d1345b;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
